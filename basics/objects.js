@@ -14,18 +14,46 @@ console.log(person);
 
 // You can also update existing properties
 person.age = 26;
+console.log(person);
 
 // You can also delete properties
 delete person.age; // I haven't seen this used.
+console.log(person);
 
 // you can also add functions to objects
 person.sayHello = function(name) {
     console.log('Hello! ' + name);
 }
+console.log(person);
 person.sayHello("Garrett");
+
+
+const tina = {
+    name: 'Tina',
+    hungry: true,
+};
+tina.bark();
+tina.eat();
+
+const bark = function(dog) {
+    console.log(dog.name + 'woof woof');
+}
+const eat = function(dog) {
+    if (dog.hungry) {
+        dog.hungry = false;
+        console.log('That was yummy!');
+    } else {
+        console.log('No thanks! I am full.');
+    }
+}
+
+bark(tina);
+eat(tina);
 
 // You can also use the this keyword to access properties of the objects
 person.talkToSelf = function() {
+    console.log("We are talking to ourselves")
+    console.log(this)
     console.log('Hello! ' + this.name);
 }
 person.talkToSelf();
@@ -41,7 +69,6 @@ person.anotherSelf();
 // common use cases for objects
 //
 // 1. to represent a single entity
-
 let blogPost = {
     title: 'My Blog Post',
     body: 'Lorem ipsum dolor sit amet.',
@@ -54,6 +81,7 @@ let blogPost = {
         }
     ],
 };
+
 // 2. to encapsulate data and behavior
 let post = {
     title: 'My Blog Post',
@@ -70,6 +98,11 @@ let post = {
         this.comments.push(comment);
     }
 };
+
+post.addComment({ username: 'Tina', body: 'Lorem ipsum dolor sit amet.' });
+
+post.comments.push({ username: 'Tina', body: 'Lorem ipsum dolor sit amet.' });
+
 // 3. to pass around data in your application
 function printPost(post) {
     console.log(post.title + ' - ' + post.body);
